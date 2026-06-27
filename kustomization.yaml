@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Stores the nginx image tag in this separate repo, one tag per file.
+# Consumed by flux-multi-base as a remote kustomize base.
+configMapGenerator:
+- name: image-tags
+  files:
+  - nginx
+  options:
+    disableNameSuffixHash: true
